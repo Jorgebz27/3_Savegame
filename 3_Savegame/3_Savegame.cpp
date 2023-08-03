@@ -101,7 +101,16 @@ int main()
                 {
                     Log("Sin esfueroz, logras derrotarlos, solo eran unos novatos");
                     data.enemysKilled = 3;
-
+                    if (savefile.is_open())
+                    {
+                        //dumpear la estructura data
+                        savefile.seekp(0, std::ios::beg);
+                        savefile.write((const char*)&data, sizeof(SGameData));
+                    }
+                    else
+                    {
+                        Log("no se pudo crear el archivo");
+                    }
                 }
                 else if (respuesta == "2") 
                 {
@@ -110,9 +119,6 @@ int main()
                 }
 
             }
-
-            Log("La tomas y continuas tu camino.");
-
         }
         else if (respuesta == "2") 
         {
