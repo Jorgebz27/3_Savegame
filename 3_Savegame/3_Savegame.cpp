@@ -47,9 +47,6 @@ const char* QueWeapon(EWeapon weapon)
 
 int main()
 {
-    std::cout << "Hello World!\n";
-
-
     //leer el archivo de savegame
     std::fstream savefile("data.sav", std::ios::in | std::ios::out);
 
