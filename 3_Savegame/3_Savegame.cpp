@@ -74,6 +74,9 @@ int main()
         if (respuesta == "1")
         {
             Log("Avanzas por el camino rocoso y encuentras una lanza abandonda.");
+            savefile.close();
+            savefile.open("data.sav", std::ios::out);
+            data.currentWeapon = EWeapon::lance;
             Log("La tomas y continuas tu camino.");
             Log("Has caminado mucho, estas cansado y hambriento.");
             Log("Ves un arbusto con frutos y por otro camino, un cofre.");
@@ -92,12 +95,14 @@ int main()
                 Log("¿Intentas atacar?");
                 Log("Presiona 1 para si o 2 para no");
 
+                savefile.close();
                 std::cin >> respuesta;
 
                 if (respuesta == "1")
                 {
-                    Log("Sin esfueroz, logras derrotarlos, solo eran unos novatos");
-                    data.enemysKilled = 3;
+                    Log("Sin esfuerzo, logras derrotarlos, solo eran unos novatos");
+                    savefile.open("data.sav", std::ios::out);
+                    data.enemysKilled += 3;
                     if (savefile.is_open())
                     {
                         //dumpear la estructura data
@@ -119,6 +124,23 @@ int main()
         }
         else if (respuesta == "2") 
         {
+            Log("Te encuentras un arco, lo tomas?");
+            Log("1. Si");
+            Log("2. No");
+
+            savefile.close();
+            std::cin >> respuesta;
+
+            if (respuesta == "1")
+            {
+                savefile.open("data.sav", std::ios::out);
+                data.currentWeapon = EWeapon::bow;
+            }
+            else {
+                data.currentWeapon = EWeapon::none;
+            }
+
+
 
         }
         else 
