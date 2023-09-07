@@ -64,9 +64,9 @@ int main()
         std::cout << ", tienes arma " << QueWeapon(data.currentWeapon) << " y has matado a " << data.enemysKilled << " enemigos.";
 
         Log("Te despiertas en un lugar desconocido, estas desconcertado.");
-        Log("Avanzas un poco y a lo lejo ves tres caminos diferentes.");
+        Log("Avanzas un poco y a lo lejo ves dos caminos diferentes.");
         Log("¿Cual eliges?.");
-        Log("Presiona 1 para izquierda, 2 para de frente y 3 para derecha.");
+        Log("Presiona 1 para izquierda, 2 para derecha.");
 
         std::string respuesta;
         std::cin >> respuesta;
@@ -137,9 +137,12 @@ int main()
                 data.currentWeapon = EWeapon::bow;
             }
             else {
-                data.currentWeapon = EWeapon::none;
             }
 
+            Log("Continuas avanzando y te encuentras con un campamento");
+            Log("Aprovechas para descansar y recuperar fuerzas");
+            savefile.close();
+            savefile.open("data.sav", std::ios::out);
 
 
         }
